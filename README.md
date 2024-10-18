@@ -9,12 +9,8 @@
 
 
 
-para probar directo (con librería netapi32.lib)
 
-g++ nuevoUsuario.cpp -o nuevoUsuario.exe -lnetapi32
-g++ eliminaUsuario.cpp -o eliminaUsuario.exe -lnetapi32
+EN LUGAR LOS PUNTOS 2, 3, 4 y SIGUIENTES
 
-
-EN LUGAR DEL PUNTO 2
-2. mingw32-make
+mingw32-make
 

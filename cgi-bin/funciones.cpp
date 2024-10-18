@@ -7,7 +7,6 @@
 using namespace std;
 
 
-
 wchar_t* convertido(char* nombre){
     int caracteres_necesarios = MultiByteToWideChar(CP_ACP, 0, nombre, -1, NULL, 0);
     wchar_t* nombre_wchar = new wchar_t[caracteres_necesarios];

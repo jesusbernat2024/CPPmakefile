@@ -1,16 +1,19 @@
-# Archivos de código fuente
-SOURCES = .\cgi-bin\funciones.cpp .\cgi-bin\funciones2.cpp
+EJECUTABLE = .\cgi-bin\funciones.cgi
+# estos son los archivos que se compilarán
+ARCHIVOS = .\cgi-bin\funciones.cpp
+LIBRERIAS = -lnetapi32
+PUERTO = 8000
 
-# Nombre del ejecutable
-EXECUTABLE = .\cgi-bin\funciones.cgi
+all: elimina_cgi compila abre_navegador abre_servidor
 
-# Regla por defecto para compilar y enlazar el programa
-all: $(EXECUTABLE)
+elimina_cgi:
+	del $(EJECUTABLE)
 
-# Regla para generar el ejecutable
-$(EXECUTABLE): $(SOURCES)
-	g++ -o $(EXECUTABLE) $(SOURCES) -lnetapi32
+compila: $(ARCHIVOS)
+	g++ -o $(EJECUTABLE) $(ARCHIVOS) $(LIBRERIAS)
 
-# Limpiar archivos temporales
-clean:
-	rm -f $(EXECUTABLE)
+abre_servidor:
+	python -m http.server --cgi $(PUERTO)
+
+abre_navegador:
+	cmd /c start http://localhost:$(PUERTO)
